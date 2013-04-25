@@ -144,10 +144,8 @@ def print_obs_header(**keywords):
     
 def print_nav_header(**keywords):
     """
-    输出导航文件header
-
-    Arguments:
-    - `**keywords`:参数列表
+    print navigation header
+    keywords contains all parameters
     """
     version      = keywords.get("version", "3.01")
     sat_system   = keywords.get("sat_system", "G")
@@ -216,7 +214,7 @@ def print_nav_header(**keywords):
 
 def print_nav_data(sat, f, keywords):
     """
-    打印导航文件内容
+    print navigation data
     sat is the sat number, keywords contains all
     necessory parameters
     """
@@ -365,13 +363,13 @@ def gen_filename(si, doy, nh, sm, yr, ft):
     
 def print_obs_data(epoch, data, f):
     """
-    打印一个历元的观测数据
+    print observation data in one epoch
     epoch = [[year, month, day, hour, min, sec], epoch_flag, # of sats in current epoch, receiver clock offset]
     data = [[sat, [obs, lli, signal strength],...],...,]
     """
 
     f.write("> ")
-    y,M,d,h,m,s = epoch[0]
+    y, M, d, h, m, s = epoch[0]
     f.write(str(y).rjust(4)+str(M).rjust(3)+str(d).rjust(3)+str(h).rjust(3)+str(m).rjust(3))
     f.write("%11.7f" % float(s))
     epoch_flag = epoch[1]
